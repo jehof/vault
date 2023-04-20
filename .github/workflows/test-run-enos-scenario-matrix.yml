@@ -83,9 +83,9 @@ jobs:
           ref: ${{ inputs.vault-revision }}
       - id: metadata
         run: |
-          echo "build-date=$(make ci-get-date)" >> $GITHUB_OUTPUT
-          filtered=$(make ci-filter-matrix)
-          echo "matrix=$(echo $filtered)}" >> $GITHUB_OUTPUT
+          echo "build-date=$(make ci-get-date)" >> "$GITHUB_OUTPUT"
+          filtered="$(make ci-filter-matrix)"
+          echo "matrix=$filtered" >> "$GITHUB_OUTPUT"
 
   # Run the Enos test scenarios
   run:

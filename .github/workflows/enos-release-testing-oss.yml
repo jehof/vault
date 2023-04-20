@@ -31,8 +31,8 @@ jobs:
           # enos-run-matrices.
           MATRIX_MAX_TEST_GROUPS: 2
         run: |
-          echo "matrix-test-group=$(make ci-get-matrix-group-id)" >> $GITHUB_OUTPUT
-          echo "vault-revision=$(make ci-get-revision)" >> $GITHUB_OUTPUT
+          echo "matrix-test-group=$(make ci-get-matrix-group-id)" >> "$GITHUB_OUTPUT"
+          echo "vault-revision=$(make ci-get-revision)" >> "$GITHUB_OUTPUT"
       - name: Set Product version
         id: set-product-version
         uses: hashicorp/actions-set-product-version@v1
@@ -57,6 +57,8 @@ jobs:
       matrix-test-group: ${{ needs.product-metadata.outputs.matrix-test-group }}
       vault-edition: oss
       vault-revision: ${{ needs.product-metadata.outputs.vault-revision }}
+      vault-version: ${{ needs.product-metadata.outputs.vault-version }}
+      vault-minor-version: ${{ needs.product-metadata.outputs.vault-minor-version }}
     secrets: inherit
 
   save-metadata:

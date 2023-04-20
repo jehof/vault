@@ -37,10 +37,10 @@ jobs:
           MATRIX_MAX_TEST_GROUPS: 5
           VAULT_VERSION: ${{ steps.set-product-version.outputs.product-version }}
         run: |
-          echo "build-date=$(make ci-get-date)" >> $GITHUB_OUTPUT
-          echo "go-version=$(cat ./.go-version)" >> $GITHUB_OUTPUT
-          echo "matrix-test-group=$(make ci-get-matrix-group-id)" >> $GITHUB_OUTPUT
-          echo "package-name=vault" >> $GITHUB_OUTPUT
+          echo "build-date=$(make ci-get-date)" >> "$GITHUB_OUTPUT"
+          echo "go-version=$(cat ./.go-version)" >> "$GITHUB_OUTPUT"
+          echo "matrix-test-group=$(make ci-get-matrix-group-id)" >> "$GITHUB_OUTPUT"
+          echo "package-name=vault" >> "$GITHUB_OUTPUT"
           echo "vault-revision=$(make ci-get-revision)" >> "$GITHUB_OUTPUT"
       - uses: hashicorp/actions-generate-metadata@v1
         id: generate-metadata-file
